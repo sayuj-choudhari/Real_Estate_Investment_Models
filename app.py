@@ -156,13 +156,13 @@ if st.button("🚀 EXECUTE DUAL-STRATEGY ANALYSIS"):
         for t in t_vals:
             # Case 1: Keep as rental until year 30
             try:
-                p_h = bisect(lambda P: simulate_housing_comparison_metric(P, t, 30, params, False), 200k, 6M, xtol=500)
+                p_h = bisect(lambda P: simulate_housing_comparison_metric(P, t, 30, params, False), 0, 6000000, xtol=500)
                 prices_hold.append(p_h)
             except: prices_hold.append(None)
             
             # Case 2: Sell at year t
             try:
-                p_s = bisect(lambda P: simulate_housing_comparison_metric(P, t, 30, params, True), 200k, 6M, xtol=500)
+                p_s = bisect(lambda P: simulate_housing_comparison_metric(P, t, 30, params, True), 0, 6000000, xtol=500)
                 prices_sell.append(p_s)
             except: prices_sell.append(None)
 
